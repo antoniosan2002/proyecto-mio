@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Chaico</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f7f6;
+            color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            width: 100%;
+            border-top: 5px solid #5da9e9;
+        }
+
+        .step {
+            display: none;
+            text-align: left;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #5da9e9;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #4a8bc2;
+        }
+
+        button.secondary {
+            background-color: #95a5a6;
+            margin-left: 10px;
+        }
+
+        .question-block {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #5da9e9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        textarea,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            font-family: inherit;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form id="mainForm" action="https://formspree.io/f/xpqwyjal" method="POST">
+
+            <div class="step active" id="step1">
+                <h2>Hola, Chaico.</h2>
+                <p>Te escribo esto con respeto y tranquilidad.</p>
+                <p>No es para incomodarte ni presionarte, solo para ser honesto contigo y cerrar una duda que llevo
+                    dentro.</p>
+                <p>No espero nada de ti, solo sinceridad.</p>
+                <p>Si quieres leerlo y responder, sigue.</p>
+                <p>Si no, lo entenderé totalmente.</p>
+                <div class="btn-group">
+                    <button type="button" onclick="nextStep(2)">Seguir</button>
+                    <button type="button" class="secondary" onclick="window.location.href='https://www.google.com'">No
+                        seguir</button>
+                </div>
+            </div>
+
+            <div class="step" id="step2">
+                <p>Desde hace un tiempo me gustas.</p>
+                <p>No te escribo esto para reclamarte nada ni para que cambies lo que sientes.</p>
+                <p>Tampoco es una confesión impulsiva.</p>
+                <p>Solo quiero ser claro contigo y también conmigo.</p>
+                <p>Quiero aclarar algo importante:</p>
+                <p><strong>mi pasado ya está cerrado.</strong></p>
+                <p>Si te escribo esto es porque lo que siento por ti es real y presente, no una comparación ni un
+                    reemplazo.</p>
+                <div class="btn-group">
+                    <button type="button" onclick="nextStep(3)">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="step" id="step3">
+                <p>Sé que varias veces me dijiste que me ves como amigo, y respeto eso.</p>
+                <p>Nunca quise incomodarte ni ponerte en una situación difícil.</p>
+                <p>Pero últimamente he sentido distancia y confusión, y por eso prefiero preguntar directamente en lugar
+                    de imaginar cosas.</p>
+                <div class="btn-group">
+                    <button type="button" onclick="nextStep(4)">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="step" id="step4">
+                <p>Quiero preguntarte algo con total sinceridad, y dime la verdad sin sentirte incómoda.</p>
+                <p>No hay respuestas correctas o incorrectas, y cualquiera que sea tu respuesta la voy a respetar.</p>
+                <div class="btn-group">
+                    <button type="button" onclick="nextStep(5)">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="step" id="step5">
+                <p>Antes de seguir, quiero preguntarte algo simple y sincero.</p>
+                <p>Respóndeme con tranquilidad, no pasa nada.</p>
+                <p>👉 Marca lo que sientas:</p>
+
+                <div class="question-block">
+                    <label>👉 ¿Te sientes cómoda conmigo?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="comoda" value="Si"> Sí</label>
+                        <label><input type="radio" name="comoda" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label>👉 ¿Te agrada pasar tiempo conmigo, aunque a veces no lo demuestres mucho?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="le_agrada_pasar_tiempo_con_migo" value="Si"> Sí</label>
+                        <label><input type="radio" name="le_agrada_pasar_tiempo_con_migo" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label>👉 ¿Sientes algo, aunque sea pequeño, y por eso a veces te acercas y otras te alejas?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="siente_algo_por_mi" value="Si"> Sí</label>
+                        <label><input type="radio" name="siente_algo_por_mi" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label>👉 ¿Te gustaría que sigamos hablando y viéndonos, pero con calma, sin presión ni
+                        apuros?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="calma_futura_hablar_pero_sin_precion" value="Si"> Sí</label>
+                        <label><input type="radio" name="calma_futura_hablar_pero_sin_precion" value="No"> No</label>
+                    </div>
+                </div>
+
+                <p>No hay respuestas correctas. Solo quiero entenderte mejor.</p>
+                <div class="btn-group">
+                    <button type="button" onclick="nextStep(6)">Continuar</button>
+                </div>
+            </div>
+
+            <div class="step" id="step6">
+                <p>Gracias por decirme la verdad.</p>
+                <p>Me alegra saberlo, de verdad. No espero que todo sea rápido ni perfecto, ni quiero ponerte presión.
+                </p>
+
+                <div class="question-block">
+                    <label>👉 ¿Te gustaría intentar algo conmigo, poco a poco y con calma?</label>
+                    <div class="radio-group" style="flex-direction: column; gap: 10px;">
+                        <label><input type="radio" name="intentaria_algo_con_migo" value="Si" onclick="setFlow('si')">
+                            Sí</label>
+                        <label><input type="radio" name="intentaria_algo_con_migo" value="No" onclick="setFlow('no')">
+                            No</label>
+                        <label><input type="radio" name="intentaria_algo_con_migo" value="No / aún no lo sé"
+                                onclick="setFlow('si')"> No / aún no lo sé</label>
+                    </div>
+                </div>
+
+                <p>Campo opcional (qué cambiar o qué te incomoda):</p>
+                <textarea name="comentario_cambios"></textarea>
+
+                <div class="btn-group">
+                    <button type="button" onclick="goFinalFlow()">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="step" id="flowSi">
+                <p>Perfecto 😊</p>
+                <p>Entonces vamos paso a paso. Yo voy a respetar tus tiempos y lo que sientas.</p>
+
+                <div class="question-block">
+                    <label>👉 ¿Te parece bien si empezamos hablando más seguido y viéndonos cuando se pueda, sin
+                        obligaciones ni expectativas raras?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="paso_a_paso_hablar_mas_seguidos" value="Si"> Sí</label>
+                        <label><input type="radio" name="paso_a_paso_hablar_mas_seguidos"
+                                value="Prefiero ir muy despacio"> Prefiero ir muy despacio</label>
+                    </div>
+                </div>
+
+                <p>Gracias por confiar en mí. Me gusta la idea de intentarlo contigo, siempre con respeto y
+                    tranquilidad.</p>
+                <div class="btn-group">
+                    <button type="button" onclick="submitAndFinish()">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="step" id="flowNo">
+                <p>Gracias por tu sinceridad. Prefiero una verdad clara antes que quedarme con dudas. Prometo respetar
+                    lo que sientes.</p>
+
+                <div class="question-block">
+                    <label>👉 ¿Te gustaría que sigamos solo como amigos? (opcional)</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="solo_amigos" value="Si"> Sí</label>
+                        <label><input type="radio" name="solo_amigos" value="No"> No</label>
+                        <label><input type="radio" name="solo_amigos" value="Prefiero tomar"> Prefiero tomar
+                            distancia</label>
+                    </div>
+                </div>
+
+                <p>Campo opcional (puedes explicar algo aquí):</p>
+                <textarea name="explicacion_distancia"></textarea>
+                <div class="btn-group">
+                    <button type="button" onclick="submitAndFinish()">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="step" id="finalStep">
+                <p>Gracias por tomarte el tiempo de responder.</p>
+                <p>Sea cual sea tu respuesta, la respeto.</p>
+                <p>No voy a insistir ni presionar.</p>
+                <p>De verdad te deseo lo mejor.</p>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        let currentFlow = '';
+
+        // FUNCIÓN NUEVA: Notifica al cargar la página
+        window.onload = function () {
+            notifyOpening();
+        };
+
+        async function notifyOpening() {
+            const formData = new FormData();
+            formData.append('Aviso', 'Chaico ha abierto el enlace');
+
+            try {
+                await fetch('https://formspree.io/f/xpqwyjal', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                console.log("Apertura notificada.");
+            } catch (e) {
+                console.log("Error al notificar apertura.");
+            }
+        }
+
+        function nextStep(n) {
+            document.querySelector('.step.active').classList.remove('active');
+            document.getElementById('step' + n).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function setFlow(flow) {
+            currentFlow = flow;
+        }
+
+        function goFinalFlow() {
+            if (!currentFlow) return alert("Por favor selecciona una opción.");
+            document.querySelector('.step.active').classList.remove('active');
+            if (currentFlow === 'si') {
+                document.getElementById('flowSi').classList.add('active');
+            } else {
+                document.getElementById('flowNo').classList.add('active');
+            }
+        }
+
+        async function submitAndFinish() {
+            const form = document.getElementById('mainForm');
+            const formData = new FormData(form);
+            const activeStep = document.querySelector('.step.active');
+            const btn = activeStep.querySelector('button');
+
+            btn.innerText = "Enviando...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    activeStep.classList.remove('active');
+                    document.getElementById('finalStep').classList.add('active');
+                } else {
+                    alert("Hubo un error al enviar.");
+                    btn.innerText = "Siguiente";
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                alert("Error de conexión.");
+                btn.disabled = false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
