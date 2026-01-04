@@ -295,29 +295,34 @@
 
     <script>
         let currentFlow = '';
-
-        // FUNCIÓN NUEVA: Notifica al cargar la página
-        window.onload = function () {
-            notifyOpening();
-        };
+        let avisoEnviado = false; // Esto evita que te lleguen mil correos si presiona el botón varias veces
 
         async function notifyOpening() {
+            if (avisoEnviado) return; // Si ya se envió una vez, no hace nada más
+
             const formData = new FormData();
-            formData.append('Aviso', 'Chaico ha abierto el enlace');
+            formData.append('Aviso', 'Chaico ha empezado a leer (pulsó el botón Seguir)');
 
             try {
+                // RECUERDA: Cambia 'xpqwyjal' por TU ID real de Formspree
                 await fetch('https://formspree.io/f/xpqwyjal', {
                     method: 'POST',
                     body: formData,
                     headers: { 'Accept': 'application/json' }
                 });
-                console.log("Apertura notificada.");
+                avisoEnviado = true;
+                console.log("Aviso enviado: Empezó a leer.");
             } catch (e) {
-                console.log("Error al notificar apertura.");
+                console.log("Error al notificar.");
             }
         }
 
         function nextStep(n) {
+            // Si n es 2, significa que viene del paso 1 y acaba de pulsar "Seguir"
+            if (n === 2) {
+                notifyOpening();
+            }
+
             document.querySelector('.step.active').classList.remove('active');
             document.getElementById('step' + n).classList.add('active');
             window.scrollTo(0, 0);
